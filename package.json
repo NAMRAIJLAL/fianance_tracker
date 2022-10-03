@@ -1,19 +1,19 @@
 {
-  "name": "finance_tracker",
+  "name": "fianance_tracker",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "^4.2.0",
     "bootstrap": "5.0",
     "jquery": "^3.6.1",
     "popper.js": "^1.16.1",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "type": "module"
   },
   "version": "0.1.0",
   "devDependencies": {
-    "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.1"
   }
 }
