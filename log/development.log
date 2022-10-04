@@ -20508,3 +20508,523 @@ Completed 500 Internal Server Error in 110ms (ActiveRecord: 0.9ms | Allocations:
 NameError (uninitialized constant User::user):
   
 app/controllers/users_controller.rb:9:in `my_friends'
+Started GET "/" for ::1 at 2022-10-03 19:33:41 +0500
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 648)
+  Rendered layouts/_navigation.html.erb (Duration: 1.7ms | Allocations: 706)
+  Rendered layouts/_messages.html.erb (Duration: 0.7ms | Allocations: 197)
+Completed 200 OK in 129ms (Views: 64.2ms | ActiveRecord: 1.4ms | Allocations: 33082)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2022-10-03 19:33:44 +0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"eYU33gOuJJ649B9Zv5Rr57tqmI5J5ciig9crDBQEw36nr7tl+jD2nAfnWGBH2UEr7BHw3Ra0vxkoqyd+Wn+dXw=="}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 27ms (ActiveRecord: 0.2ms | Allocations: 6421)
+
+
+Started GET "/" for ::1 at 2022-10-03 19:33:44 +0500
+Processing by WelcomeController#index as HTML
+Completed 401 Unauthorized in 7ms (ActiveRecord: 0.0ms | Allocations: 373)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-10-03 19:33:44 +0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 5.1ms | Allocations: 785)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 19.9ms | Allocations: 4264)
+  Rendered layouts/_navigation.html.erb (Duration: 0.4ms | Allocations: 109)
+  Rendered layouts/_messages.html.erb (Duration: 0.1ms | Allocations: 30)
+Completed 200 OK in 66ms (Views: 63.2ms | ActiveRecord: 0.0ms | Allocations: 12200)
+
+
+Started POST "/users/sign_in" for ::1 at 2022-10-03 19:33:58 +0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"wnCm9+MPIJ9FQbOZO8gWgTOfisCpCXmYyAQrEW0F9MzpxMEcUvE7ZyzhlLZhmF+XNOcXP4LUF2040JHSdxTPlw==", "user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "user1@example.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 515ms (ActiveRecord: 1.5ms | Allocations: 6346)
+
+
+Started GET "/" for ::1 at 2022-10-03 19:33:59 +0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 247)
+  Rendered layouts/_navigation.html.erb (Duration: 0.7ms | Allocations: 325)
+  Rendered layouts/_messages.html.erb (Duration: 0.1ms | Allocations: 29)
+Completed 200 OK in 18ms (Views: 13.5ms | ActiveRecord: 0.3ms | Allocations: 8379)
+
+
+Started GET "/my_portfolio" for ::1 at 2022-10-03 19:34:00 +0500
+Processing by UsersController#my_portfolio as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/my_portfolio.html.erb within layouts/application
+  [1m[36mStock Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "stocks" INNER JOIN "user_stocks" ON "stocks"."id" = "user_stocks"."stock_id" WHERE "user_stocks"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/my_portfolio.html.erb:21
+  [1m[36mStock Load (1.1ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" INNER JOIN "user_stocks" ON "stocks"."id" = "user_stocks"."stock_id" WHERE "user_stocks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/stocks/_list.html.erb:13
+  Rendered stocks/_list.html.erb (Duration: 40.8ms | Allocations: 5530)
+  Rendered users/my_portfolio.html.erb within layouts/application (Duration: 116.0ms | Allocations: 11606)
+  Rendered layouts/_navigation.html.erb (Duration: 1.2ms | Allocations: 318)
+  Rendered layouts/_messages.html.erb (Duration: 0.1ms | Allocations: 24)
+Completed 200 OK in 249ms (Views: 129.8ms | ActiveRecord: 9.8ms | Allocations: 27895)
+
+
+Started GET "/search_stock?stock=GOOG&button=" for ::1 at 2022-10-03 19:34:04 +0500
+Processing by StocksController#search as HTML
+  Parameters: {"stock"=>"GOOG", "button"=>""}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_messages.html.erb (Duration: 0.4ms | Allocations: 25)
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "stocks" INNER JOIN "user_stocks" ON "stocks"."id" = "user_stocks"."stock_id" WHERE "user_stocks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:18:in `under_stock_limit?'
+  Rendered users/_result.html.erb (Duration: 85.0ms | Allocations: 4578)
+Completed 500 Internal Server Error in 2619ms (ActiveRecord: 1.3ms | Allocations: 9674)
+
+
+  
+ActionView::Template::Error (undefined method `check_db' for #<Class:0x000055aab5707640>):
+     7:     <strong>Symbol: </strong> <%= @stock.ticker %>
+     8:     <strong>Name: </strong> <%= @stock.name %>
+     9:     <strong>Price: </strong> <%= @stock.last_price %>
+    10:     <% if current_user.can_track_stock?(@stock.ticker) %>
+    11:       <%= link_to 'Add to portfolio', user_stocks_path(user: current_user, ticker: @stock.ticker),
+    12:                                     class: "btn btn-sm btn-success", method: :post %>
+    13:     <% else %>
+  
+app/models/user.rb:12:in `stock_already_tracked?'
+app/models/user.rb:22:in `can_track_stock?'
+app/views/users/_result.html.erb:10
+app/controllers/stocks_controller.rb:10:in `block (2 levels) in search'
+app/controllers/stocks_controller.rb:9:in `search'
+Started GET "/" for ::1 at 2022-10-03 19:35:58 +0500
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 648)
+  Rendered layouts/_navigation.html.erb (Duration: 1.5ms | Allocations: 706)
+  Rendered layouts/_messages.html.erb (Duration: 0.5ms | Allocations: 197)
+Completed 200 OK in 124ms (Views: 60.5ms | ActiveRecord: 2.7ms | Allocations: 33084)
+
+
+Started GET "/my_portfolio" for ::1 at 2022-10-03 19:36:00 +0500
+Processing by UsersController#my_portfolio as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/my_portfolio.html.erb within layouts/application
+  [1m[36mStock Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "stocks" INNER JOIN "user_stocks" ON "stocks"."id" = "user_stocks"."stock_id" WHERE "user_stocks"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/my_portfolio.html.erb:21
+  [1m[36mStock Load (0.5ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" INNER JOIN "user_stocks" ON "stocks"."id" = "user_stocks"."stock_id" WHERE "user_stocks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/stocks/_list.html.erb:13
+  Rendered stocks/_list.html.erb (Duration: 15.6ms | Allocations: 5519)
+  Rendered users/my_portfolio.html.erb within layouts/application (Duration: 98.7ms | Allocations: 11602)
+  Rendered layouts/_navigation.html.erb (Duration: 0.9ms | Allocations: 318)
+  Rendered layouts/_messages.html.erb (Duration: 0.1ms | Allocations: 24)
+Completed 200 OK in 213ms (Views: 110.7ms | ActiveRecord: 7.2ms | Allocations: 27890)
+
+
+Started GET "/search_stock?stock=GOOG&button=" for ::1 at 2022-10-03 19:36:04 +0500
+Processing by StocksController#search as HTML
+  Parameters: {"stock"=>"GOOG", "button"=>""}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_messages.html.erb (Duration: 0.3ms | Allocations: 25)
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "stocks" INNER JOIN "user_stocks" ON "stocks"."id" = "user_stocks"."stock_id" WHERE "user_stocks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:18:in `under_stock_limit?'
+  Rendered users/_result.html.erb (Duration: 87.8ms | Allocations: 5217)
+Completed 500 Internal Server Error in 2622ms (ActiveRecord: 1.7ms | Allocations: 10339)
+
+
+  
+ActionView::Template::Error (undefined method `check_db' for #<Class:0x000056027f116660>):
+     7:     <strong>Symbol: </strong> <%= @stock.ticker %>
+     8:     <strong>Name: </strong> <%= @stock.name %>
+     9:     <strong>Price: </strong> <%= @stock.last_price %>
+    10:     <% if current_user.can_track_stock?(@stock.ticker) %>
+    11:       <%= link_to 'Add to portfolio', user_stocks_path(user: current_user, ticker: @stock.ticker),
+    12:                                     class: "btn btn-sm btn-success", method: :post %>
+    13:     <% else %>
+  
+app/models/user.rb:12:in `stock_already_tracked?'
+app/models/user.rb:22:in `can_track_stock?'
+app/views/users/_result.html.erb:10
+app/controllers/stocks_controller.rb:10:in `block (2 levels) in search'
+app/controllers/stocks_controller.rb:9:in `search'
+Started GET "/" for ::1 at 2022-10-04 15:42:33 +0500
+  [1m[35m (5.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+Completed 401 Unauthorized in 34ms (ActiveRecord: 0.0ms | Allocations: 3439)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-10-04 15:42:33 +0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.9ms | Allocations: 785)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 20.0ms | Allocations: 4552)
+  Rendered layouts/_navigation.html.erb (Duration: 3.6ms | Allocations: 479)
+  Rendered layouts/_messages.html.erb (Duration: 1.7ms | Allocations: 200)
+Completed 200 OK in 253ms (Views: 226.5ms | ActiveRecord: 1.1ms | Allocations: 32520)
+
+
+Started POST "/users/sign_in" for ::1 at 2022-10-04 15:42:55 +0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"JudBaTVgr3OxWnolkbpQnW2D02NbqL0PrZJcvishzFJHEiojM4FGRJhviWGM8/uEOGJOjTGRkPimZeSDqS0oNQ==", "user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "user1@example.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 431ms (ActiveRecord: 0.8ms | Allocations: 7129)
+
+
+Started GET "/" for ::1 at 2022-10-04 15:42:55 +0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 352)
+  Rendered layouts/_navigation.html.erb (Duration: 0.9ms | Allocations: 329)
+  Rendered layouts/_messages.html.erb (Duration: 0.1ms | Allocations: 29)
+Completed 200 OK in 19ms (Views: 15.2ms | ActiveRecord: 0.4ms | Allocations: 9279)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-10-04 15:43:00 +0500
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 27ms (ActiveRecord: 0.8ms | Allocations: 1954)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2022-10-04 15:43:04 +0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+lGyJFA1PLliwdcrul+MpdDu5vbsQKom3C4EBxrBLyWZrgponMHEroFsaF1njunwaTD7jY6EqYwZOQSMK2VlHw=="}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 41ms (ActiveRecord: 0.8ms | Allocations: 3152)
+
+
+Started GET "/" for ::1 at 2022-10-04 15:43:04 +0500
+Processing by WelcomeController#index as HTML
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms | Allocations: 325)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-10-04 15:43:04 +0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.7ms | Allocations: 210)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 15.3ms | Allocations: 1493)
+  Rendered layouts/_navigation.html.erb (Duration: 1.2ms | Allocations: 109)
+  Rendered layouts/_messages.html.erb (Duration: 0.6ms | Allocations: 30)
+Completed 200 OK in 68ms (Views: 62.0ms | ActiveRecord: 0.0ms | Allocations: 8156)
+
+
+Started GET "/" for ::1 at 2022-10-04 16:22:43 +0500
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+Completed 401 Unauthorized in 27ms (ActiveRecord: 0.0ms | Allocations: 3535)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-10-04 16:22:43 +0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.4ms | Allocations: 785)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 12.5ms | Allocations: 4546)
+  Rendered layouts/_navigation.html.erb (Duration: 1.3ms | Allocations: 477)
+  Rendered layouts/_messages.html.erb (Duration: 0.8ms | Allocations: 200)
+Completed 200 OK in 100ms (Views: 72.2ms | ActiveRecord: 1.4ms | Allocations: 32513)
+
+
+Started POST "/users/sign_in" for ::1 at 2022-10-04 16:22:57 +0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"8LYHoYpS5Y2jszp8KHkaXDdXY8pRyoG/oWRo7X7bOUs8l5pZu3WTodwJGyG5OKBmHBlecpobvFtEgDc9h6xfGQ==", "user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "user1@example.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 535ms (ActiveRecord: 1.4ms | Allocations: 7148)
+
+
+Started GET "/" for ::1 at 2022-10-04 16:22:58 +0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 354)
+  Rendered layouts/_navigation.html.erb (Duration: 0.6ms | Allocations: 329)
+  Rendered layouts/_messages.html.erb (Duration: 0.1ms | Allocations: 29)
+Completed 200 OK in 20ms (Views: 15.4ms | ActiveRecord: 0.3ms | Allocations: 9279)
+
+
+Started GET "/" for ::1 at 2022-10-04 16:23:27 +0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 338)
+  Rendered layouts/_navigation.html.erb (Duration: 8.1ms | Allocations: 674)
+  Rendered layouts/_messages.html.erb (Duration: 2.6ms | Allocations: 189)
+Completed 200 OK in 106ms (Views: 84.2ms | ActiveRecord: 0.7ms | Allocations: 10398)
+
+
+Started GET "/" for ::1 at 2022-10-04 16:23:41 +0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 338)
+  Rendered layouts/_navigation.html.erb (Duration: 10.1ms | Allocations: 673)
+  Rendered layouts/_messages.html.erb (Duration: 1.5ms | Allocations: 189)
+Completed 200 OK in 108ms (Views: 89.8ms | ActiveRecord: 0.8ms | Allocations: 10411)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2022-10-04 16:23:56 +0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"z9ztUsPEh7kxUSv3AFok4QWzirlVsvtJ1GEbNAg+ryQK0WNwPGbBar1Emrhx8rT7hihFsojU/vK6GB9n/Ou+gw=="}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 128ms (ActiveRecord: 0.7ms | Allocations: 8551)
+
+
+Started GET "/" for ::1 at 2022-10-04 16:23:57 +0500
+Processing by WelcomeController#index as HTML
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms | Allocations: 332)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-10-04 16:23:57 +0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 9.7ms | Allocations: 669)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 35.9ms | Allocations: 2481)
+  Rendered layouts/_navigation.html.erb (Duration: 1.6ms | Allocations: 455)
+  Rendered layouts/_messages.html.erb (Duration: 0.6ms | Allocations: 195)
+Completed 200 OK in 90ms (Views: 83.0ms | ActiveRecord: 0.0ms | Allocations: 11574)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-10-04 16:25:23 +0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.8ms | Allocations: 669)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 9.6ms | Allocations: 2472)
+  Rendered layouts/_navigation.html.erb (Duration: 1.1ms | Allocations: 458)
+  Rendered layouts/_messages.html.erb (Duration: 0.5ms | Allocations: 189)
+Completed 200 OK in 51ms (Views: 48.9ms | ActiveRecord: 0.0ms | Allocations: 11547)
+
+
+Started POST "/users/sign_in" for ::1 at 2022-10-04 16:25:34 +0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"kn/FhxqWlEGYIMI8k01Y92c0uG1oPb0LXTYCXEnWDHmGvgWqCfFtSyhizGW/cGHflkpkp3PtC5yxbwSH6B9Nrw==", "user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "user1@example.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 502ms (ActiveRecord: 0.6ms | Allocations: 4231)
+
+
+Started GET "/" for ::1 at 2022-10-04 16:25:35 +0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 341)
+  Rendered layouts/_navigation.html.erb (Duration: 0.6ms | Allocations: 325)
+  Rendered layouts/_messages.html.erb (Duration: 0.1ms | Allocations: 29)
+Completed 200 OK in 17ms (Views: 12.9ms | ActiveRecord: 0.1ms | Allocations: 9209)
+
+
+Started GET "/my_friends" for ::1 at 2022-10-04 16:25:43 +0500
+Processing by UsersController#my_friends as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 84ms (ActiveRecord: 0.5ms | Allocations: 8533)
+
+
+  
+NameError (uninitialized constant User::user):
+  
+app/controllers/users_controller.rb:9:in `my_friends'
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/my_friends" for ::1 at 2022-10-04 16:27:30 +0500
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#my_friends as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 74ms (ActiveRecord: 1.9ms | Allocations: 20522)
+
+
+  
+NameError (uninitialized constant User::user):
+  
+app/controllers/users_controller.rb:9:in `my_friends'
+Started GET "/my_portfolio" for ::1 at 2022-10-04 16:30:00 +0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#my_portfolio as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/my_portfolio.html.erb within layouts/application
+  [1m[36mStock Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "stocks" INNER JOIN "user_stocks" ON "stocks"."id" = "user_stocks"."stock_id" WHERE "user_stocks"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/my_portfolio.html.erb:21
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" INNER JOIN "user_stocks" ON "stocks"."id" = "user_stocks"."stock_id" WHERE "user_stocks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/stocks/_list.html.erb:13
+  Rendered stocks/_list.html.erb (Duration: 17.9ms | Allocations: 5517)
+  Rendered users/my_portfolio.html.erb within layouts/application (Duration: 37.3ms | Allocations: 11628)
+  Rendered layouts/_navigation.html.erb (Duration: 1.3ms | Allocations: 690)
+  Rendered layouts/_messages.html.erb (Duration: 0.5ms | Allocations: 197)
+Completed 200 OK in 115ms (Views: 76.7ms | ActiveRecord: 3.7ms | Allocations: 42637)
+
+
+Started GET "/my_friends" for ::1 at 2022-10-04 16:30:04 +0500
+Processing by UsersController#my_friends as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 0.7ms | Allocations: 4102)
+
+
+  
+NameError (uninitialized constant User::user):
+  
+app/controllers/users_controller.rb:9:in `my_friends'
+Started GET "/my_portfolio" for ::1 at 2022-10-04 16:36:40 +0500
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#my_portfolio as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/my_portfolio.html.erb within layouts/application
+  [1m[36mStock Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "stocks" INNER JOIN "user_stocks" ON "stocks"."id" = "user_stocks"."stock_id" WHERE "user_stocks"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/my_portfolio.html.erb:21
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" INNER JOIN "user_stocks" ON "stocks"."id" = "user_stocks"."stock_id" WHERE "user_stocks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/stocks/_list.html.erb:13
+  Rendered stocks/_list.html.erb (Duration: 17.1ms | Allocations: 5500)
+  Rendered users/my_portfolio.html.erb within layouts/application (Duration: 35.9ms | Allocations: 11878)
+  Rendered layouts/_navigation.html.erb (Duration: 1.7ms | Allocations: 690)
+  Rendered layouts/_messages.html.erb (Duration: 0.8ms | Allocations: 197)
+Completed 200 OK in 191ms (Views: 101.6ms | ActiveRecord: 3.5ms | Allocations: 51674)
+
+
+Started GET "/my_friends" for ::1 at 2022-10-04 16:36:43 +0500
+Processing by UsersController#my_friends as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 0.8ms | Allocations: 4120)
+
+
+  
+NameError (uninitialized constant User::user):
+  
+app/controllers/users_controller.rb:9:in `my_friends'
+Started GET "/my_portfolio" for ::1 at 2022-10-04 16:37:25 +0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#my_portfolio as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/my_portfolio.html.erb within layouts/application
+  [1m[36mStock Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "stocks" INNER JOIN "user_stocks" ON "stocks"."id" = "user_stocks"."stock_id" WHERE "user_stocks"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/my_portfolio.html.erb:21
+  [1m[36mStock Load (0.5ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" INNER JOIN "user_stocks" ON "stocks"."id" = "user_stocks"."stock_id" WHERE "user_stocks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/stocks/_list.html.erb:13
+  Rendered stocks/_list.html.erb (Duration: 17.4ms | Allocations: 5171)
+  Rendered users/my_portfolio.html.erb within layouts/application (Duration: 27.4ms | Allocations: 8383)
+  Rendered layouts/_navigation.html.erb (Duration: 1.0ms | Allocations: 316)
+  Rendered layouts/_messages.html.erb (Duration: 0.1ms | Allocations: 24)
+Completed 200 OK in 85ms (Views: 38.6ms | ActiveRecord: 4.8ms | Allocations: 28484)
+
+
+Started GET "/my_friends" for ::1 at 2022-10-04 16:37:26 +0500
+Processing by UsersController#my_friends as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 0.7ms | Allocations: 4074)
+
+
+  
+NameError (uninitialized constant User::user):
+  
+app/controllers/users_controller.rb:9:in `my_friends'
+Started GET "/my_friends" for ::1 at 2022-10-04 16:40:07 +0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#my_friends as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 1.4ms | Allocations: 12959)
+
+
+  
+NameError (uninitialized constant User::user):
+  
+app/controllers/users_controller.rb:9:in `my_friends'
+Started POST "/__web_console/repl_sessions/25565799c33a9b8fc02b216ecaf7b55c/trace" for ::1 at 2022-10-04 16:40:13 +0500
+Started PUT "/__web_console/repl_sessions/25565799c33a9b8fc02b216ecaf7b55c" for ::1 at 2022-10-04 16:40:18 +0500
+Started PUT "/__web_console/repl_sessions/25565799c33a9b8fc02b216ecaf7b55c" for ::1 at 2022-10-04 16:40:20 +0500
+Started PUT "/__web_console/repl_sessions/25565799c33a9b8fc02b216ecaf7b55c" for ::1 at 2022-10-04 16:40:34 +0500
+Started PUT "/__web_console/repl_sessions/25565799c33a9b8fc02b216ecaf7b55c" for ::1 at 2022-10-04 16:40:39 +0500
+Started PUT "/__web_console/repl_sessions/25565799c33a9b8fc02b216ecaf7b55c" for ::1 at 2022-10-04 16:40:44 +0500
+Started PUT "/__web_console/repl_sessions/25565799c33a9b8fc02b216ecaf7b55c" for ::1 at 2022-10-04 16:40:47 +0500
+Started PUT "/__web_console/repl_sessions/25565799c33a9b8fc02b216ecaf7b55c" for ::1 at 2022-10-04 16:40:50 +0500
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mStock Load (0.6ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mFriendship Load (0.6ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUserStock Load (0.5ms)[0m  [1m[34mSELECT "user_stocks".* FROM "user_stocks" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mFriendship Load (0.5ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/" for ::1 at 2022-10-04 16:55:33 +0500
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 648)
+  Rendered layouts/_navigation.html.erb (Duration: 2.8ms | Allocations: 704)
+  Rendered layouts/_messages.html.erb (Duration: 1.1ms | Allocations: 197)
+Completed 200 OK in 148ms (Views: 89.9ms | ActiveRecord: 1.2ms | Allocations: 33079)
+
+
+Started GET "/my_portfolio" for ::1 at 2022-10-04 16:55:37 +0500
+Processing by UsersController#my_portfolio as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/my_portfolio.html.erb within layouts/application
+  [1m[36mStock Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "stocks" INNER JOIN "user_stocks" ON "stocks"."id" = "user_stocks"."stock_id" WHERE "user_stocks"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/my_portfolio.html.erb:21
+  [1m[36mStock Load (0.6ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" INNER JOIN "user_stocks" ON "stocks"."id" = "user_stocks"."stock_id" WHERE "user_stocks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/stocks/_list.html.erb:13
+  Rendered stocks/_list.html.erb (Duration: 66.8ms | Allocations: 5517)
+  Rendered users/my_portfolio.html.erb within layouts/application (Duration: 153.5ms | Allocations: 11598)
+  Rendered layouts/_navigation.html.erb (Duration: 0.6ms | Allocations: 318)
+  Rendered layouts/_messages.html.erb (Duration: 0.1ms | Allocations: 24)
+Completed 200 OK in 282ms (Views: 170.3ms | ActiveRecord: 8.7ms | Allocations: 27868)
+
+
+Started GET "/my_friends" for ::1 at 2022-10-04 16:55:38 +0500
+Processing by UsersController#my_friends as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/my_friends.html.erb within layouts/application
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/my_friends.html.erb:23
+  Rendered users/my_friends.html.erb within layouts/application (Duration: 33.4ms | Allocations: 2418)
+  Rendered layouts/_navigation.html.erb (Duration: 3.5ms | Allocations: 314)
+  Rendered layouts/_messages.html.erb (Duration: 0.3ms | Allocations: 24)
+Completed 200 OK in 128ms (Views: 86.0ms | ActiveRecord: 4.3ms | Allocations: 12199)
+
+
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mFriendship Load (0.5ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mFriendship Load (1.1ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFriendship Create (3.6ms)[0m  [1m[32mINSERT INTO "friendships" ("user_id", "friend_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["friend_id", 3], ["created_at", "2022-10-04 11:58:36.956153"], ["updated_at", "2022-10-04 11:58:36.956153"]]
+  [1m[35m (165.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mFriendship Load (0.6ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/my_friends" for ::1 at 2022-10-04 16:59:20 +0500
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#my_friends as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/my_friends.html.erb within layouts/application
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/my_friends.html.erb:23
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/friends/_list.html.erb:13
+  Rendered friends/_list.html.erb (Duration: 5.7ms | Allocations: 1578)
+  Rendered users/my_friends.html.erb within layouts/application (Duration: 23.2ms | Allocations: 6960)
+  Rendered layouts/_navigation.html.erb (Duration: 1.6ms | Allocations: 685)
+  Rendered layouts/_messages.html.erb (Duration: 0.8ms | Allocations: 197)
+Completed 200 OK in 171ms (Views: 86.8ms | ActiveRecord: 2.7ms | Allocations: 45384)
+
+

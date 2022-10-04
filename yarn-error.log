@@ -1,0 +1,54 @@
+Arguments: 
+  /home/deltalabs/.nvm/versions/node/v16.17.0/bin/node /home/deltalabs/.yarn/bin/yarn.js add v1.22.19
+
+PATH: 
+  /home/deltalabs/.rvm/gems/ruby-2.5.1/bin:/home/deltalabs/.rvm/gems/ruby-2.5.1@global/bin:/home/deltalabs/.rvm/rubies/ruby-2.5.1/bin:/home/deltalabs/.rvm/bin:/home/deltalabs/.nvm/versions/node/v16.17.0/bin:/home/deltalabs/.yarn/bin:/home/deltalabs/.config/yarn/global/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.17.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/v1.22.19: Not found
+      at Request.params.callback [as _callback] (/home/deltalabs/.yarn/lib/cli.js:66145:18)
+      at Request.self.callback (/home/deltalabs/.yarn/lib/cli.js:140890:22)
+      at Request.emit (node:events:513:28)
+      at Request.<anonymous> (/home/deltalabs/.yarn/lib/cli.js:141862:10)
+      at Request.emit (node:events:513:28)
+      at IncomingMessage.<anonymous> (/home/deltalabs/.yarn/lib/cli.js:141784:12)
+      at Object.onceWrapper (node:events:627:28)
+      at IncomingMessage.emit (node:events:525:35)
+      at endReadableNT (node:internal/streams/readable:1358:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+npm manifest: 
+  {
+    "name": "fianance_tracker",
+    "private": true,
+    "dependencies": {
+      "@rails/actioncable": "^6.0.0",
+      "@rails/activestorage": "^6.0.0",
+      "@rails/ujs": "^6.0.0",
+      "@rails/webpacker": "^4.2.0",
+      "bootstrap": "5.0",
+      "jquery": "^3.6.1",
+      "popper.js": "^1.16.1",
+      "turbolinks": "^5.2.0",
+      "type": "module"
+    },
+    "version": "0.1.0",
+    "devDependencies": {
+      "webpack-dev-server": "^4.11.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
